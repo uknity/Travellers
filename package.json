@@ -1,0 +1,25 @@
+{
+  "name": "Travellers",
+  "version": "1.0.0",
+  "description": "In this mini-project, you will work with a group to build an API using Node.js, Express.js, MySQL, and Sequelize, and you will deploy it to Heroku.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uknity/Travellers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uknity/Travellers/issues"
+  },
+  "homepage": "https://github.com/uknity/Travellers#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
