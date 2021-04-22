@@ -1,40 +1,40 @@
 const router = require('express').Router();
-const { LibraryCard, Reader } = require('../../models');
+const { Location, Trip } = require('../../models');
 
-// GET all cards
+// GET all locations
 router.get('/', async (req, res) => {
   try {
-    const libraryCardData = await LibraryCard.findAll({
-      include: [{ model: Reader }],
+    const locationData = await Location.findAll({
+      include: [{ model: Trip }],
     });
-    res.status(200).json(libraryCardData);
+    res.status(200).json(locationData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET a single card
+// GET a single location
 router.get('/:id', async (req, res) => {
   try {
-    const libraryCardData = await LibraryCard.findByPk(req.params.id, {
-      include: [{ model: Reader }],
+    const locationData = await Location.findByPk(req.params.id, {
+      include: [{ model: Trip }],
     });
 
-    if (!libraryCardData) {
-      res.status(404).json({ message: 'No library card found with that id!' });
+    if (!locationData) {
+      res.status(404).json({ message: 'No location found with that id!' });
       return;
     }
 
-    res.status(200).json(libraryCardData);
+    res.status(200).json(locationData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// CREATE a card
+// CREATE a location
 router.post('/', async (req, res) => {
   try {
-    const locationData = await LibraryCard.create({
+    const locationData = await Location.create({
       reader_id: req.body.reader_id,
     });
     res.status(200).json(locationData);
@@ -43,21 +43,21 @@ router.post('/', async (req, res) => {
   }
 });
 
-// DELETE a card
+// DELETE a location
 router.delete('/:id', async (req, res) => {
   try {
-    const libraryCardData = await LibraryCard.destroy({
+    const locationData = await Location.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!libraryCardData) {
-      res.status(404).json({ message: 'No library card found with that id!' });
+    if (!locationData) {
+      res.status(404).json({ message: 'No location found with that id!' });
       return;
     }
 
-    res.status(200).json(libraryCardData);
+    res.status(200).json(locationData);
   } catch (err) {
     res.status(500).json(err);
   }
